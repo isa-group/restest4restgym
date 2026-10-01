@@ -8,7 +8,7 @@
 #
 # The native-access flag silences four warnings the database driver would otherwise print
 # before a single request went out, which would be the first thing anybody reading the
-# campaign's logs saw.
+# session's logs saw.
 
 exec java --enable-native-access=ALL-UNNAMED \
   -cp "/tool/dist/restest-cli.jar:/tool/dist/lib/*" \

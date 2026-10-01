@@ -1,12 +1,11 @@
-# The image the benchmark runs when it measures RESTest 2.
+# The image RESTgym runs when it measures RESTest 2.
 #
-# It is built with the benchmark's own checkout as the build context - that is how the
-# benchmark's build step invokes Docker - so every COPY below starts at tools/, and this
-# file only means anything once run-evaluation.sh has staged it there.
+# It is built with RESTgym's own checkout as the build context - that is how RESTgym's build step
+# invokes Docker - so every COPY below starts at tools/, and the directory holding this file has
+# to be tools/restest2.
 #
-# RESTest is built from source at a commit rather than copied from a machine, so the image
-# can say exactly what it contains and anybody can rebuild the same one. The commit comes
-# from restgym.lock unless a campaign overrides it.
+# RESTest is built from source at a commit rather than copied from a machine, so the image can say
+# exactly what it contains and anybody can rebuild the same one.
 
 ARG RESTEST_REPOSITORY=https://github.com/isa-group/RESTest.git
 ARG RESTEST_REF=17369e00f244485680f7bd698fff6b60c8684c66
@@ -43,8 +42,8 @@ RUN mkdir -p /dist/lib \
 # number generator, L64X128MixRandom, which lives in the jdk.random module - a module the
 # trimmed JRE images leave out. On one of those, every run dies before its first request with
 # "no implementation of the random number generator algorithm is available". Java 21 rather
-# than the newest, because 21 is the oldest release RESTest supports and a campaign should be
-# run on the floor of that range, not the ceiling.
+# than the newest, because 21 is the oldest release RESTest supports and a measurement should
+# be run on the floor of that range, not the ceiling.
 FROM eclipse-temurin:21-jdk
 
 COPY --from=build /dist /tool/dist
@@ -52,11 +51,9 @@ COPY ./tools/restest2/restest /tool/restest
 COPY ./tools/restest2/entrypoint.sh /tool/entrypoint.sh
 RUN chmod +x /tool/restest /tool/entrypoint.sh
 
-# What RESTest is told, as opposed to what it is: a plan and dictionaries per variant, and the
-# name of the variant this image was built for. variants/README.md says what a variant is. The
-# tool above is cached, so changing the variant rebuilds only these two lines.
-COPY ./tools/restest2/variants /tool/variants
-COPY ./tools/restest2/variant /tool/variant
+# What RESTest is handed besides the API's document: the files under config/, which
+# config/README.md describes. An empty config/ is RESTest with its published defaults.
+COPY ./tools/restest2/config /tool/config
 
 WORKDIR /tool
 ENTRYPOINT ["/tool/entrypoint.sh"]

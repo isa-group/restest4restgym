@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# What the benchmark starts, and the one file in this repository that knows anything about
-# the benchmark's conventions.
+# What RESTgym starts, and the one file here that knows anything about RESTgym's conventions.
 #
 # It must never exit. The platform stops this container when the time budget is up, and
 # treats a container that ended on its own as a failed run - so the loop is not decoration.
@@ -22,27 +21,25 @@ fi
 
 url="http://${HOST}:${PORT}"
 
-# The variant this image was built for - see variants/README.md. A variant may carry a plan,
-# passed to every API, a file of settings, also passed to every API, and a directory of
-# dictionaries per API, passed to that API alone. One with none of them is the tool as shipped,
-# which is what the default name means.
-variant="$(cat /tool/variant 2>/dev/null || echo shipped)"
+# What RESTest is handed besides the document: whatever config/ holds - a plan, passed to every
+# API, a file of settings, also passed to every API, and a dictionary per API, passed to that API
+# alone. An empty config/ is RESTest with its published defaults.
 told=""
-if [ -f "/tool/variants/${variant}/plan.yaml" ]; then
-  told="${told} --campaign /tool/variants/${variant}/plan.yaml"
+if [ -f /tool/config/plan.yaml ]; then
+  told="${told} --campaign /tool/config/plan.yaml"
 fi
-if [ -f "/tool/variants/${variant}/settings.yaml" ]; then
-  told="${told} --settings /tool/variants/${variant}/settings.yaml"
+if [ -f /tool/config/settings.yaml ]; then
+  told="${told} --settings /tool/config/settings.yaml"
 fi
-if [ -d "/tool/variants/${variant}/${API}" ]; then
-  told="${told} --dictionary /tool/variants/${variant}/${API}/"
+if [ -d "/tool/config/dictionaries/${API}" ]; then
+  told="${told} --dictionary /tool/config/dictionaries/${API}/"
 fi
 
 echo "RESTest 2 against ${API} at ${url}"
 echo "  document:    ${specification}"
 echo "  time budget: ${TIME_BUDGET} minutes"
 echo "  built from:  $(cat /tool/dist/restest-ref.txt)"
-echo "  variant:     ${variant}${told:+ (${told# })}"
+echo "  handed:     ${told:- nothing beyond the document}"
 
 if [ ! -f "$specification" ]; then
   echo "No document for ${API} under /specifications. Nothing can be tested; idling so the"

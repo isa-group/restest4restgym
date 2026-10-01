@@ -13,7 +13,7 @@ failures it finds. This repository packages it as a tool for
 | Source code | [isa-group/RESTest at `17369e00`](https://github.com/isa-group/RESTest/tree/17369e00f244485680f7bd698fff6b60c8684c66) |
 | Commit | `17369e00f244485680f7bd698fff6b60c8684c66` |
 | Documentation | [README](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/README.md) and [command line](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/command-line.md) at that commit |
-| Variant | `shipped` - see [`variants/`](variants/README.md) |
+| Configuration | RESTest's published defaults: nothing beyond the API's document, its address and the time budget |
 | Licence | Apache-2.0, like RESTest |
 | Packaged | 2026-10-01 |
 
@@ -51,8 +51,8 @@ restest run /specifications/<API>.yaml --url http://$HOST:$PORT --budget ${TIME_
     --out /tmp/restest-out/pass-<n>
 ```
 
-plus whatever the variant adds. RESTest spends the whole budget; the entry point keeps the
-container alive in a loop, as RESTgym expects, should a run end early. It runs on Java 21 and needs
-no other configuration, credentials or network access beyond the API under test.
+plus whatever [`config/`](config/README.md) holds. RESTest spends the whole budget; the entry point
+keeps the container alive in a loop, as RESTgym expects, should a run end early. It runs on Java 21
+and needs no other configuration, credentials or network access beyond the API under test.
 
 To use RESTest itself, without RESTgym, see its [README](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/README.md).
