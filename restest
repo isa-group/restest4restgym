@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Runs the RESTest distribution inside this image.
+#
+# The class path rather than the module path, for the reason the launcher in RESTest's own
+# checkout gives: two versions of the OpenAPI parser's module end up on the runtime path,
+# and a module path refuses to start with both.
+#
+# The native-access flag silences four warnings the database driver would otherwise print
+# before a single request went out, which would be the first thing anybody reading the
+# campaign's logs saw.
+
+exec java --enable-native-access=ALL-UNNAMED \
+  -cp "/tool/dist/restest-cli.jar:/tool/dist/lib/*" \
+  io.restest.cli.Restest "$@"
