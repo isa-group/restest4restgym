@@ -35,7 +35,7 @@ if [ -d "/tool/config/dictionaries/${API}" ]; then
   told="${told} --dictionary /tool/config/dictionaries/${API}/"
 fi
 
-echo "RESTest 2 against ${API} at ${url}"
+echo "RESTest against ${API} at ${url}"
 echo "  document:    ${specification}"
 echo "  time budget: ${TIME_BUDGET} minutes"
 echo "  built from:  $(cat /tool/dist/restest-ref.txt)"

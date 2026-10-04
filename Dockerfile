@@ -1,4 +1,4 @@
-# The image RESTgym runs when it measures RESTest 2.
+# The image RESTgym runs when it measures RESTest.
 #
 # It is built with RESTgym's own checkout as the build context - that is how RESTgym's build step
 # invokes Docker - so every COPY below starts at tools/, and the directory holding this file has

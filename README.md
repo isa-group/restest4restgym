@@ -1,4 +1,4 @@
-# RESTest 2 for RESTgym
+# RESTest for RESTgym
 
 [RESTest](https://github.com/isa-group/RESTest) is a black-box testing tool for REST APIs: given
 an OpenAPI document and the address of a running API, it generates requests, sends them for as
@@ -10,8 +10,9 @@ failures it finds. This repository packages it as a tool for
 
 | | |
 |---|---|
+| Version | [2.0.0](https://github.com/isa-group/RESTest/releases/tag/v2.0.0) (tag `v2.0.0`) |
+| Commit | [`f1e99896a602a2611c7004949b34a7b639ba8b73`](https://github.com/isa-group/RESTest/commit/f1e99896a602a2611c7004949b34a7b639ba8b73) |
 | Source code | [isa-group/RESTest at `f1e99896`](https://github.com/isa-group/RESTest/tree/f1e99896a602a2611c7004949b34a7b639ba8b73) |
-| Commit | `f1e99896a602a2611c7004949b34a7b639ba8b73` |
 | Documentation | [README](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/README.md) and [command line](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/command-line.md) at that commit |
 | Configuration | the files in [`config/`](config/README.md) |
 | Licence | Apache-2.0, like RESTest |
