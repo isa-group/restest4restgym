@@ -10,12 +10,12 @@ failures it finds. This repository packages it as a tool for
 
 | | |
 |---|---|
-| Source code | [isa-group/RESTest at `17369e00`](https://github.com/isa-group/RESTest/tree/17369e00f244485680f7bd698fff6b60c8684c66) |
-| Commit | `17369e00f244485680f7bd698fff6b60c8684c66` |
-| Documentation | [README](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/README.md) and [command line](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/command-line.md) at that commit |
-| Configuration | RESTest's published defaults: nothing beyond the API's document, its address and the time budget |
+| Source code | [isa-group/RESTest at `f1e99896`](https://github.com/isa-group/RESTest/tree/f1e99896a602a2611c7004949b34a7b639ba8b73) |
+| Commit | `f1e99896a602a2611c7004949b34a7b639ba8b73` |
+| Documentation | [README](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/README.md) and [command line](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/command-line.md) at that commit |
+| Configuration | the files in [`config/`](config/README.md) |
 | Licence | Apache-2.0, like RESTest |
-| Packaged | 2026-10-01 |
+| Packaged | 2026-10-04 |
 
 The image compiles RESTest from source at that commit; nothing here is a binary.
 
@@ -55,4 +55,4 @@ plus whatever [`config/`](config/README.md) holds. RESTest spends the whole budg
 keeps the container alive in a loop, as RESTgym expects, should a run end early. It runs on Java 21
 and needs no other configuration, credentials or network access beyond the API under test.
 
-To use RESTest itself, without RESTgym, see its [README](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/README.md).
+To use RESTest itself, without RESTgym, see its [README](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/README.md).

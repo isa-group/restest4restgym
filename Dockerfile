@@ -8,7 +8,7 @@
 # exactly what it contains and anybody can rebuild the same one.
 
 ARG RESTEST_REPOSITORY=https://github.com/isa-group/RESTest.git
-ARG RESTEST_REF=17369e00f244485680f7bd698fff6b60c8684c66
+ARG RESTEST_REF=f1e99896a602a2611c7004949b34a7b639ba8b73
 
 FROM eclipse-temurin:25-jdk AS build
 ARG RESTEST_REPOSITORY

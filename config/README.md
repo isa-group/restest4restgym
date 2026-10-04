@@ -10,10 +10,16 @@ command line named beside it:
 | `settings.yaml` | `--settings` | every API |
 | `dictionaries/<API>/` | `--dictionary` | that API alone |
 
-It holds nothing else: this package runs RESTest with its published defaults. The
-directory is here because the Dockerfile copies it.
+This package holds:
 
-The formats are RESTest's own: [command line](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/command-line.md),
-[plans](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/campaign-format.md),
-[settings](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/settings.md) and
-[dictionaries](https://github.com/isa-group/RESTest/blob/17369e00f244485680f7bd698fff6b60c8684c66/docs/dictionary-format.md).
+- `dictionaries/flight-search/values.yaml`
+- `dictionaries/gestao-hospital/values.yaml`
+- `dictionaries/kafka-rest-proxy/values.yaml`
+- `dictionaries/notebook-manager/values.yaml`
+- `dictionaries/pet-clinic/values.yaml`
+- `plan.yaml`
+
+The formats are RESTest's own: [command line](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/command-line.md),
+[plans](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/campaign-format.md),
+[settings](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/settings.md) and
+[dictionaries](https://github.com/isa-group/RESTest/blob/f1e99896a602a2611c7004949b34a7b639ba8b73/docs/dictionary-format.md).
