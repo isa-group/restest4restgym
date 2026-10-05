@@ -8,7 +8,7 @@
 # exactly what it contains and anybody can rebuild the same one.
 
 ARG RESTEST_REPOSITORY=https://github.com/isa-group/RESTest.git
-ARG RESTEST_REF=f1e99896a602a2611c7004949b34a7b639ba8b73
+ARG RESTEST_REF=45cd3dc89753e7e366f67f10b73006c22ed68d53
 
 FROM eclipse-temurin:25-jdk AS build
 ARG RESTEST_REPOSITORY
@@ -49,7 +49,12 @@ FROM eclipse-temurin:21-jdk
 COPY --from=build /dist /tool/dist
 COPY ./tools/restest2/restest /tool/restest
 COPY ./tools/restest2/entrypoint.sh /tool/entrypoint.sh
-RUN chmod +x /tool/restest /tool/entrypoint.sh
+# A checkout made with Git for Windows turns line endings into CRLF unless told otherwise, and a
+# script whose first line is "#!/bin/sh\r" does not start: the container dies at once with
+# "exec /tool/entrypoint.sh: no such file or directory". The carriage returns are taken out here,
+# so the image works whatever checkout it is built from.
+RUN sed -i 's/\r$//' /tool/restest /tool/entrypoint.sh \
+ && chmod +x /tool/restest /tool/entrypoint.sh
 
 # What RESTest is handed besides the API's document: the files under config/, which
 # config/README.md describes. An empty config/ is RESTest with its published defaults.
